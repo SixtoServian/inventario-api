@@ -1,0 +1,23 @@
+# Esquema GraphQL del inventario
+type Producto {
+    id: ID!
+    nombre: String!
+    precio: Float!
+    stock: Int!
+}
+
+type Query {
+    # Lista todos los productos
+    productos: [Producto!]! @all(model: "App\\Models\\Producto")
+    # Busca un producto por ID
+    producto(id: ID! @eq): Producto @find(model: "App\\Models\\Producto")
+}
+
+type Mutation {
+    # Reutiliza ProductoService para crear
+    crearProducto(nombre: String!, precio: Float!, stock: Int!): Producto!
+        @field(resolver: "App\\GraphQL\\Mutations\\ProductoMutator@crear")
+    # Cambia solo el stock
+    actualizarStock(id: ID!, stock: Int!): Producto!
+        @field(resolver: "App\\GraphQL\\Mutations\\ProductoMutator@stock")
+}
