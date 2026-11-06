@@ -1,9 +1,11 @@
+![Inventario en vivo](capturas/04-reverb-2pestañas.png)
+
+
 # Inventario API — Laboratorio
 
 ## Stack
 - Laravel 13.40 / PHP 8.4.27 / SQLite
 - REST · GraphQL (Lighthouse 6.74) · WebSockets (Reverb 1.12)
-- gRPC: pendiente por límite de tiempo
 
 ## Endpoints REST
 - GET    /api/productos
@@ -32,4 +34,23 @@ Mutation: mutation { actualizarStock(id:1, stock:8) { id stock } }
 - REST: OK (201/200/204)
 - GraphQL: OK (query + 2 mutations)
 - Reverb: OK (jobs DONE, evento recibido en 2da pestaña)
-- gRPC: no implementado por tiempo
+- gRPC: OK (Node.js + Python, captura 05)
+
+---
+
+## Capturas de pantalla
+
+### 1. REST — CRUD completo
+![REST](capturas/01-rest.png)
+
+### 2. GraphQL — query y mutations
+![GraphQL](capturas/02-graphql.png)
+
+### 3. Reverb — jobs procesados por el worker
+![Worker Reverb](capturas/03-reverb-worker.png)
+
+### 4. Reverb — dos pestañas sincronizadas
+![Dos pestañas](capturas/04-reverb-2pestañas.png)
+
+### 5. gRPC — clientes Node.js y Python
+![gRPC](capturas/05-grpc.png)
